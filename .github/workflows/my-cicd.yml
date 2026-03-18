@@ -1,0 +1,25 @@
+name: HTML-CSS
+
+# Ye tab chalega jab aap code push karenge
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code ko download karo
+        uses: actions/checkout@v4
+
+      - name: File Check (Kya index.html hai?)
+        run: |
+          if [ -f index.html ]; then
+            echo "Badhiya! index.html file mil gayi."
+          else
+            echo "Error! index.html nahi mili."
+            exit 1
+          fi
+
+      - name: Final Message
+        run: echo "CI/CD Pipeline successfully chal gaya!"
